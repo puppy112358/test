@@ -104,11 +104,9 @@ void USART2_IRQHandler(void)
 {
     if (USART_GetITStatus(USART2, USART_IT_RXNE) != RESET)
     {
-        if (RxCnt1 <= 6) {
-            RxBuffer1[RxCnt1++] = USART_ReceiveData(USART2);
-            USART_SendData(USART1, RxBuffer1[RxCnt1 - 1]);
-        }
-        //        if (RxCnt1 == 6) {
+        RxBuffer1[RxCnt1++] = USART_ReceiveData(USART2);
+        USART_SendData(USART1, RxBuffer1[RxCnt1 - 1]);
+//        if (RxCnt1 == 6) {
 //            RxCnt1 = 0;
 //        }
     }
